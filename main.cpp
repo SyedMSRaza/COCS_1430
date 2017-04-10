@@ -7,8 +7,23 @@ using namespace std;
 int main() {
 	long int totalScore = 0, order = 1;
 	string line;
-	ifstream myfile;
-	myfile.open("sortednames.txt");
+ifstream names;
+ofstream sorted;
+names.open("names.txt");
+sorted.open("sortednames.txt");
+	
+	string one;
+
+	names >> one;
+	
+//sorting function
+	
+	sorted << one;
+names.close();
+sorted.close();
+	
+ifstream myfile;
+myfile.open("sortednames.txt");
 	while (getline(myfile, line))
 	{
 		int nameScore = 0;
