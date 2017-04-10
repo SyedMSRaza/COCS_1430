@@ -8,7 +8,7 @@ int main() {
 	long int totalScore = 0, order = 1;
 	string line;
 	ifstream myfile;
-	myfile.open("test.txt");
+	myfile.open("SortedNames.txt");
 	while (getline(myfile, line))
 	{
 		int nameScore = 0;
