@@ -29,19 +29,11 @@ int main() {
 
 	for (int index = 0; index < numberOfLines; index++)
 	{
+		string line = names[index];
 		line = names[index];
-		int nameScore = 0;
-		for (int i = 0; i < line.length(); i++)
-		{
+		int NameScore = nameScore(line, order);
 
-			if (isalpha(line[i]))
-			{
-				char letter = line[i];
-				nameScore += (int)letter - 64;
-			}
-		}
-
-		totalScore += (nameScore*order);
+		totalScore += (NameScore);
 		order++;
 	}
 	cout << "The sum total of all the name score is: " << totalScore << endl;
@@ -79,6 +71,7 @@ int main() {
 	system("pause");
 	return 0;
 }
+
 int nameScore(string name, int order) {
 	int NameScore = 0;
 	for (int i = 0; i < name.length(); i++)
