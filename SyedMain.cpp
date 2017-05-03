@@ -6,6 +6,7 @@
 #include <vector>
 using namespace std;
 
+int nameScore(string name, int order);
 int binaryVectorSearch(vector<string> v, int first, int last, string name);
 
 int main() {
@@ -35,7 +36,6 @@ int main() {
 
 			if (isalpha(line[i]))
 			{
-
 				char letter = line[i];
 				nameScore += (int)letter - 64;
 			}
@@ -52,56 +52,44 @@ int main() {
 	order = binaryVectorSearch(names, 0, names.size() - 1, name) + 1;
 
 	if (order > 0) {
-		int nameScore = 0;
-		for (int i = 0; i < name.length(); i++)
-		{
-			if (isalpha(name[i]))
-			{
-				char letter = name[i];
-				nameScore += (int)letter - 64;
-			}
-		}
-		cout << "Namescore for " << name << ": \t" << nameScore*order << endl;
+		int NameScore = nameScore(name, order);
+		cout << "Namescore for " << name << ": \t" << NameScore << endl;
 	}
 	else {
 		names.push_back(name);
 		numberOfLines++;
 		sort(names.begin(), names.end());
-
+		order = 1;
 		for (int index = 0; index < numberOfLines; index++)
 		{
-			line = names[index];
-			int nameScore = 0;
-			for (int i = 0; i < line.length(); i++)
-			{
+			string name = names[index];
+			int NameScore = nameScore(name, order);
 
-				if (isalpha(line[i]))
-				{
-
-					char letter = line[i];
-					nameScore += (int)letter - 64;
-				}
-			}
-
-			totalScore += (nameScore*order);
+			totalScore += (NameScore);
 			order++;
 		}
+
 	order = binaryVectorSearch(names, 0, names.size() - 1, name) + 1;
-	int nameScore = 0;
-	for (int i = 0; i < name.length(); i++)
-	{
-		if (isalpha(name[i]))
-		{
-			char letter = name[i];
-			nameScore += (int)letter - 64;
-		}
-	}
-	cout << "Namescore for " << name << ": \t" << nameScore*order << endl;
+	int NameScore = nameScore(name, order);
+
+	cout << "Namescore for " << name << ": \t" << NameScore << endl;
 	cout << "The updated sum total of all of the namescores is: " << totalScore << endl;
 	}
 
 	system("pause");
 	return 0;
+}
+int nameScore(string name, int order) {
+	int NameScore = 0;
+	for (int i = 0; i < name.length(); i++)
+	{
+		if (isalpha(name[i]))
+		{
+			char letter = name[i];
+			NameScore += (int)letter - 64;
+		}
+	}
+	return NameScore *= order;
 }
 
 int binaryVectorSearch(vector<string> v, int first, int last, string name) {
