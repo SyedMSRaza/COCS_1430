@@ -24,7 +24,7 @@ int main() {
 		names.push_back(line);
 		++numberOfLines;
 	}
-	sort(names.begin(), names.end());
+	sort(names.begin(), names.end()); // From Jeffry
 	myfile.close();
 
 	for (int index = 0; index < numberOfLines; index++)
@@ -40,7 +40,7 @@ int main() {
 	cout << "Enter a name to find its namescore: ";
 	string name;
 	cin >> name;
-
+	transform(name.begin(), name.end(), name.begin(), ::toupper); //From Jeffry's code
 	order = binaryVectorSearch(names, 0, names.size() - 1, name) + 1;
 
 	if (order > 0) {
@@ -50,7 +50,7 @@ int main() {
 	else {
 		names.push_back(name);
 		numberOfLines++;
-		sort(names.begin(), names.end());
+		sort(names.begin(), names.end()); // From Jeffry
 		order = 1;
 		for (int index = 0; index < numberOfLines; index++)
 		{
